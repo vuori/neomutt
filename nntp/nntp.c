@@ -1800,7 +1800,7 @@ int nntp_open_connection(struct NntpAccountData *adata)
 
   mutt_message(_("Connected to %s. %s"), conn->account.host,
                posting ? _("Posting is ok") : _("Posting is NOT ok"));
-  mutt_sleep(1);
+  /* vuori: slows down things a lot: mutt_sleep(1); */
 
 #ifdef USE_SSL
   /* Attempt STARTTLS if available and desired. */
