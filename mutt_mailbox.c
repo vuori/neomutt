@@ -167,6 +167,9 @@ int mutt_mailbox_check(struct Mailbox *m_cur, CheckStatsFlags flags)
   if (TAILQ_EMPTY(&NeoMutt->accounts)) // fast return if there are no mailboxes
     return 0;
 
+  if (kInMboxOpen)
+    return 0;
+
 #ifdef USE_IMAP
   if (flags & MUTT_MAILBOX_CHECK_FORCE)
     mutt_update_num_postponed();

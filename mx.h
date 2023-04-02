@@ -35,6 +35,8 @@ struct Email;
 
 extern const struct EnumDef MboxTypeDef;
 
+extern int kInMboxOpen;
+
 typedef uint8_t MsgOpenFlags;      ///< Flags for mx_msg_open_new(), e.g. #MUTT_ADD_FROM
 #define MUTT_MSG_NO_FLAGS       0  ///< No flags are set
 #define MUTT_ADD_FROM     (1 << 0) ///< add a From_ line

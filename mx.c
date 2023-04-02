@@ -294,6 +294,8 @@ bool mx_mbox_ac_link(struct Mailbox *m)
   return true;
 }
 
+int kInMboxOpen = 0;
+
 /**
  * mx_mbox_open - Open a mailbox and parse it
  * @param m     Mailbox to open
@@ -385,8 +387,10 @@ bool mx_mbox_open(struct Mailbox *m, OpenMailboxFlags flags)
   m->msg_tagged = 0;
   m->vcount = 0;
 
+  kInMboxOpen = 1;
   enum MxOpenReturns rc = m->mx_ops->mbox_open(m);
   m->opened++;
+  kInMboxOpen = 0;
 
   if ((rc == MX_OPEN_OK) || (rc == MX_OPEN_ABORT))
   {
