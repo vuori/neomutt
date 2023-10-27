@@ -154,7 +154,10 @@ void account_free(struct Account **ptr)
   account_mailbox_remove(a, NULL);
 
   if (a->adata && a->adata_free)
+  {
     a->adata_free(&a->adata);
+    a->adata = NULL;
+  }
 
   cs_subset_free(&a->sub);
   FREE(&a->name);
